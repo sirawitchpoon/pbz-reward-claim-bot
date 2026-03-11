@@ -1,23 +1,32 @@
-# Reward Claim Bot
-
-> **Reward delivery bot for the Phantom Blade Zero community.**  
-> Lucky draw winners claim Discord Nitro or Steam codes via a button in a designated channel.
+<p align="center">
+  <strong>Reward Claim Bot</strong>
+</p>
+<p align="center">
+  <em>Reward delivery bot for the Phantom Blade Zero community.</em>
+</p>
+<p align="center">
+  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D18-brightgreen?logo=node.js" alt="Node" /></a>
+  <a href="https://discord.js.org"><img src="https://img.shields.io/badge/Discord.js-v14-5865F2?logo=discord" alt="Discord.js" /></a>
+  <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript" alt="TypeScript" /></a>
+  <img src="https://img.shields.io/badge/license-ISC-green" alt="License" />
+  <img src="https://img.shields.io/badge/Phantom%20Blade%20Zero-PBZ%20Ecosystem-8b0000" alt="PBZ" />
+</p>
 
 ---
 
-## Overview
+Lucky draw winners claim Discord Nitro or Steam codes via a button in a designated channel. Links/codes sent **ephemeral** — only the winner sees them.
+
+## 📋 Overview
 
 | | |
 |---|---|
 | **Part of** | Phantom Blade Zero (PBZ) — Discord bot ecosystem |
-| **Role** | One-time reward claim (link/code sent ephemeral to winner) |
+| **Role** | One-time reward claim |
 | **Stack** | TypeScript, Discord.js v14, Express.js (admin), JSON files |
-
-Bot posts a **Claim Reward** button. Users with an assigned reward click it and receive their link or code in an ephemeral message (only they see it). Admin web dashboard at `http://localhost:3456` to add/remove rewards and view stats. No MongoDB — uses `data/rewards.json` and `data/claimed.json` (bind-mounted).
 
 ---
 
-## Features
+## ✨ Features
 
 - **Single or multiple rewards** per user — selection menu if multiple.
 - **Admin dashboard** — Add reward (id, name, type Nitro/Steam, link/code, target userId), view/delete, reload config.
@@ -25,7 +34,7 @@ Bot posts a **Claim Reward** button. Users with an assigned reward click it and 
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 cp .env.example .env   # DISCORD_TOKEN, REWARD_CHANNEL_ID, ADMIN_PASSWORD
@@ -38,10 +47,10 @@ Dashboard: **http://localhost:3456** (user: `admin`, password from `ADMIN_PASSWO
 
 ---
 
-## Environment
+## ⚙️ Environment
 
 | Variable | Required | Description |
-|----------|----------|--------------|
+|----------|----------|-------------|
 | `DISCORD_TOKEN` | Yes | Bot token |
 | `REWARD_CHANNEL_ID` | Yes | Channel for Claim Reward button |
 | `ADMIN_PASSWORD` | Yes | Dashboard auth |
@@ -49,13 +58,13 @@ Dashboard: **http://localhost:3456** (user: `admin`, password from `ADMIN_PASSWO
 
 ---
 
-## Data
+## 📦 Data
 
 - `data/rewards.json` — Reward definitions (sensitive; do not commit).
 - `data/claimed.json` — Claim records (written by bot).
 
 ---
 
-## License
+## 📄 License
 
-ISC
+ISC · Part of the **Phantom Blade Zero** community ecosystem.
