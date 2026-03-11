@@ -1,0 +1,16 @@
+[
+  {
+    "id": "nitro-001",
+    "label": "Discord Nitro 1 month",
+    "type": "nitro",
+    "payload": "https://discord.gift/xxxx",
+    "assignedUserId": "DISCORD_USER_ID_HERE"
+  },
+  {
+    "id": "steam-001",
+    "label": "Steam 500 THB",
+    "type": "steam",
+    "payload": "XXXXX-XXXXX-XXXXX",
+    "assignedUserId": "ANOTHER_DISCORD_USER_ID"
+  }
+]

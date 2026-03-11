@@ -1,0 +1,10 @@
+services:
+  reward-claim-bot:
+    build: .
+    # No fixed container_name — avoids conflict with stuck container when using docker-up-fresh.sh (-p rcb2)
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "${ADMIN_HTTP_PORT:-3456}:3456"

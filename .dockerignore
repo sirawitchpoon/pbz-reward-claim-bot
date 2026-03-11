@@ -1,0 +1,7 @@
+node_modules
+dist
+.git
+.env
+*.md
+data/rewards.json
+data/claimed.json

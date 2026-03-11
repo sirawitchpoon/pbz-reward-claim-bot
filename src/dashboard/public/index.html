@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reward Claim — Admin</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="nav">
+      <a href="#" class="nav-item active" data-page="dashboard">
+        <span class="nav-icon">◉</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-page="rewards">
+        <span class="nav-icon">🎁</span>
+        <span>Manage rewards</span>
+      </a>
+      <a href="#" class="nav-item" data-page="add">
+        <span class="nav-icon">➕</span>
+        <span>Add reward</span>
+      </a>
+      <a href="#" class="nav-item" data-page="logs">
+        <span class="nav-icon">📋</span>
+        <span>Logs</span>
+      </a>
+    </nav>
+  </aside>
+  <main class="main">
+    <header class="header">
+      <h1 class="page-title">Reward Claim Admin</h1>
+      <button type="button" class="btn btn-secondary" id="btnReload">Reload config</button>
+    </header>
+
+    <section id="page-dashboard" class="page active">
+      <div class="cards">
+        <div class="card stat-card">
+          <h3>Total rewards</h3>
+          <p class="stat-value" id="statTotal">0</p>
+        </div>
+        <div class="card stat-card">
+          <h3>Claimed</h3>
+          <p class="stat-value accent" id="statClaimed">0</p>
+        </div>
+        <div class="card stat-card">
+          <h3>Unclaimed</h3>
+          <p class="stat-value" id="statUnclaimed">0</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-rewards" class="page">
+      <div class="card">
+        <h2>Rewards</h2>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Label</th>
+                <th>Type</th>
+                <th>Assigned User ID</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="rewardsTableBody"></tbody>
+          </table>
+        </div>
+        <p class="table-hint">Click <strong>Edit</strong> to change label, type, link/code, or assigned winner. Reward ID cannot be changed.</p>
+      </div>
+    </section>
+
+    <section id="page-edit" class="page">
+      <div class="card form-card">
+        <h2>Edit reward</h2>
+        <form id="formEditReward">
+          <input type="hidden" id="editId" name="id" />
+          <div class="field">
+            <label>Reward ID</label>
+            <p class="field-readonly" id="editIdDisplay"></p>
+          </div>
+          <div class="field">
+            <label for="editLabel">Label</label>
+            <input type="text" id="editLabel" name="label" required placeholder="e.g. Discord Nitro 1 month" />
+          </div>
+          <div class="field">
+            <label for="editType">Type</label>
+            <select id="editType" name="type" required>
+              <option value="nitro">Discord Nitro (link)</option>
+              <option value="steam">Steam Gift Card (code)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="editPayload">Link or code</label>
+            <input type="text" id="editPayload" name="payload" required placeholder="https://discord.gift/... or XXXXX-XXXXX-XXXXX" />
+          </div>
+          <div class="field">
+            <label for="editUserId">Discord User ID (winner)</label>
+            <input type="text" id="editUserId" name="assignedUserId" required placeholder="123456789012345678" />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" id="editCancel">Cancel</button>
+            <button type="button" class="btn btn-danger" id="editDelete">Delete reward</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="page-logs" class="page">
+      <div class="card">
+        <h2>Activity logs</h2>
+        <p class="table-hint">Recent reward creation, edits, claims, and config reloads.</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Action</th>
+                <th>Reward ID</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="logsTableBody"></tbody>
+          </table>
+        </div>
+        <button type="button" class="btn btn-secondary" id="logsRefresh">Refresh</button>
+      </div>
+    </section>
+
+    <section id="page-add" class="page">
+      <div class="card form-card">
+        <h2>Add reward</h2>
+        <form id="formAddReward">
+          <div class="field">
+            <label for="addId">Reward ID (unique)</label>
+            <input type="text" id="addId" name="id" required placeholder="e.g. nitro-001" />
+          </div>
+          <div class="field">
+            <label for="addLabel">Label</label>
+            <input type="text" id="addLabel" name="label" required placeholder="e.g. Discord Nitro 1 month" />
+          </div>
+          <div class="field">
+            <label for="addType">Type</label>
+            <select id="addType" name="type" required>
+              <option value="nitro">Discord Nitro (link)</option>
+              <option value="steam">Steam Gift Card (code)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="addPayload">Link or code</label>
+            <input type="text" id="addPayload" name="payload" required placeholder="https://discord.gift/... or XXXXX-XXXXX-XXXXX" />
+          </div>
+          <div class="field">
+            <label for="addUserId">Discord User ID (winner)</label>
+            <input type="text" id="addUserId" name="assignedUserId" required placeholder="123456789012345678" />
+          </div>
+          <button type="submit" class="btn btn-primary">Add reward</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
