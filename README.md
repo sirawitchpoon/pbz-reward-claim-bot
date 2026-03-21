@@ -65,6 +65,12 @@ Dashboard: **http://localhost:3456** (user: `admin`, password from `ADMIN_PASSWO
 
 ---
 
+## 🔗 Ecosystem
+
+Delivers prizes from Honorbot lucky draws; other PBZ bots include **Shadow Duel** ([`wuxia-bobozan`](../wuxia-bobozan)), **pbz-dashboard**, etc. See [`docs/README.md`](../docs/README.md).
+
+---
+
 ## 📄 License
 
 ISC · Part of the **Phantom Blade Zero** community ecosystem.
